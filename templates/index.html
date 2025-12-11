@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Election Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <h1 class="title">Election Predictor</h1>
+
+    <form action="{{ url_for('predic_datapoint') }}" method="post">
+      <label for="District">District</label>
+      <input
+        type="text"
+        name="District"
+        id="District"
+        placeholder="Enter District" />
+
+      <label for="ConstituencyTitle">Constituency Title</label>
+      <input
+        type="text"
+        name="ConstituencyTitle"
+        id="ConstituencyTitle"
+        placeholder="Enter Constituency Title" />
+
+      <label for="Votes">Votes</label>
+      <input type="number" name="Votes" id="Votes" placeholder="Enter Votes" />
+
+      <label for="TotalValidVotes">Total Valid Votes</label>
+      <input
+        type="number"
+        name="TotalValidVotes"
+        id="TotalValidVotes"
+        placeholder="Enter Total Valid Votes" />
+
+      <label for="TotalRejectedVotes">Total Rejected Votes</label>
+      <input
+        type="number"
+        name="TotalRejectedVotes"
+        id="TotalRejectedVotes"
+        placeholder="Enter Total Rejected Votes" />
+
+      <label for="TotalVotes">Total Votes</label>
+      <input
+        type="number"
+        name="TotalVotes"
+        id="TotalVotes"
+        placeholder="Enter Total Votes" />
+
+      <label for="TotalRegisteredVoters">Total Registered Voters</label>
+      <input
+        type="number"
+        name="TotalRegisteredVoters"
+        id="TotalRegisteredVoters"
+        placeholder="Enter Registered Voters" />
+
+      <label for="Turnout">Turnout</label>
+      <input
+        type="number"
+        name="Turnout"
+        id="Turnout"
+        placeholder="Enter Turnout" />
+
+      <label for="Year">Year</label>
+      <input type="number" name="Year" id="Year" placeholder="Enter Year" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
