@@ -7,67 +7,194 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #f5a623, #f76b1c);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        max-width: 900px;
+        width: 100%;
+        animation: fadeIn 0.6s ease-in-out;
+      }
+
+      h1.title {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-group label {
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .input-group input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1.5px solid #ccc;
+        font-size: 16px;
+      }
+
+      .input-group input:focus {
+        outline: none;
+        border-color: #ff7f50;
+        box-shadow: 0 0 8px rgba(255, 127, 80, 0.4);
+      }
+
+      button[type="submit"] {
+        grid-column: 1 / -1;
+        padding: 15px;
+        background: #ff7f50;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background: #e0673f;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <h1 class="title">Election Predictor</h1>
+    <div class="card">
+      <h1 class="title">Election Predictor</h1>
 
-    <form action="{{ url_for('predic_datapoint') }}" method="post">
-      <label for="District">District</label>
-      <input
-        type="text"
-        name="District"
-        id="District"
-        placeholder="Enter District" />
+      <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <div class="input-group">
+          <label for="District">District</label>
+          <input
+            type="text"
+            name="District"
+            id="District"
+            placeholder="Peshawar"
+            value="" />
+        </div>
 
-      <label for="ConstituencyTitle">Constituency Title</label>
-      <input
-        type="text"
-        name="ConstituencyTitle"
-        id="ConstituencyTitle"
-        placeholder="Enter Constituency Title" />
+        <div class="input-group">
+          <label for="ConstituencyTitle">Constituency Title</label>
+          <input
+            type="text"
+            name="ConstituencyTitle"
+            id="ConstituencyTitle"
+            placeholder="Enter Constituency Title" />
+        </div>
 
-      <label for="Votes">Votes</label>
-      <input type="number" name="Votes" id="Votes" placeholder="Enter Votes" />
+        <div class="input-group">
+          <label for="Votes">Votes</label>
+          <input
+            type="number"
+            name="Votes"
+            id="Votes"
+            placeholder="Enter Votes"
+            min="0" />
+        </div>
 
-      <label for="TotalValidVotes">Total Valid Votes</label>
-      <input
-        type="number"
-        name="TotalValidVotes"
-        id="TotalValidVotes"
-        placeholder="Enter Total Valid Votes" />
+        <div class="input-group">
+          <label for="TotalValidVotes">Total Valid Votes</label>
+          <input
+            type="number"
+            name="TotalValidVotes"
+            id="TotalValidVotes"
+            placeholder="Enter Total Valid Votes"
+            min="0" />
+        </div>
 
-      <label for="TotalRejectedVotes">Total Rejected Votes</label>
-      <input
-        type="number"
-        name="TotalRejectedVotes"
-        id="TotalRejectedVotes"
-        placeholder="Enter Total Rejected Votes" />
+        <div class="input-group">
+          <label for="TotalRejectedVotes">Total Rejected Votes</label>
+          <input
+            type="number"
+            name="TotalRejectedVotes"
+            id="TotalRejectedVotes"
+            placeholder="Enter Total Rejected Votes"
+            min="0" />
+        </div>
 
-      <label for="TotalVotes">Total Votes</label>
-      <input
-        type="number"
-        name="TotalVotes"
-        id="TotalVotes"
-        placeholder="Enter Total Votes" />
+        <div class="input-group">
+          <label for="TotalVotes">Total Votes</label>
+          <input
+            type="number"
+            name="TotalVotes"
+            id="TotalVotes"
+            placeholder="Enter Total Votes"
+            min="0" />
+        </div>
 
-      <label for="TotalRegisteredVoters">Total Registered Voters</label>
-      <input
-        type="number"
-        name="TotalRegisteredVoters"
-        id="TotalRegisteredVoters"
-        placeholder="Enter Registered Voters" />
+        <div class="input-group">
+          <label for="TotalRegisteredVoters">Total Registered Voters</label>
+          <input
+            type="number"
+            name="TotalRegisteredVoters"
+            id="TotalRegisteredVoters"
+            placeholder="Enter Registered Voters"
+            min="0" />
+        </div>
 
-      <label for="Turnout">Turnout</label>
-      <input
-        type="number"
-        name="Turnout"
-        id="Turnout"
-        placeholder="Enter Turnout" />
+        <div class="input-group">
+          <label for="Turnout">Turnout</label>
+          <input
+            type="number"
+            name="Turnout"
+            id="Turnout"
+            placeholder="Enter Turnout"
+            min="0" />
+        </div>
 
-      <label for="Year">Year</label>
-      <input type="number" name="Year" id="Year" placeholder="Enter Year" />
+        <div class="input-group">
+          <label for="Year">Year</label>
+          <input
+            type="number"
+            name="Year"
+            id="Year"
+            placeholder="2023"
+            min="2000" />
+        </div>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+        {% if result %}
+        <h2 style="text-align: center; margin-top: 20px">
+          Winner : {{ result }}
+        </h2>
+        {% endif %}
+      </form>
+    </div>
   </body>
 </html>
